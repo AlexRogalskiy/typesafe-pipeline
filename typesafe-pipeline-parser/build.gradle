@@ -1,0 +1,36 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    api "org.jetbrains.kotlin:kotlin-script-runtime"
+    api "org.jetbrains.kotlin:kotlin-script-util"
+    api "org.jetbrains.kotlin:kotlin-scripting-common"
+    api "org.jetbrains.kotlin:kotlin-compiler-embeddable"
+    api "org.jetbrains.kotlin:kotlin-scripting-jsr223-embeddable"
+    api project(":typesafe-pipeline-core")
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifactId = 'typesafe-pipeline-parser'
+            from components.java
+        }
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
+}

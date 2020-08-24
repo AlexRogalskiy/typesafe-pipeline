@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'com.github.pozo.typesafe-pipeline-plugin' version '1.0-SNAPSHOT'
+}
+
+group 'com.github.pozo'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+typesafePipeline {
+    descriptorFile = "Main.kts"
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
